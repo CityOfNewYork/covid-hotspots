@@ -6,22 +6,21 @@
   "scripts": {
     "test": "jest",
     "build": "webpack",
-    "prebuild": "yarn test && yarn roll-css",
-    "postbuild": "node replaceUrl",
-    "roll-css": "./node_modules/nyc-lib/css/roll-css.sh ./src/css/cooling-center.theme.css ./src/css/cooling-center.css",
+    "prebuild": "yarn roll-css",
+    "roll-css": "./node_modules/nyc-lib/css/roll-css.sh ./src/css/covid-hotspots.theme.css ./src/css/covid-hotspots.css",
     "predeploy": "yarn build",
     "deploy": "node deploy"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cchendoitt/cooling-center.git"
+    "url": "git+https://github.com/CityOfNewYork/covid-hotspots.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cchendoitt/cooling-center/issues"
+    "url": "https://github.com/CityOfNewYork/covid-hotspots/issues"
   },
-  "homepage": "https://github.com/cchendoitt/cooling-center#readme",
+  "homepage": "https://github.com/CityOfNewYork/covid-hotspots#readme",
   "dependencies": {
     "jquery": "^3.3.1",
     "nyc-lib": "^1.4.9",
