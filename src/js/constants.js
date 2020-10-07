@@ -9,7 +9,7 @@ export const GUIDANCE = {
   orange: {
     houses_of_worship: 'Houses of worship may remain open for individual worship at 33% capacity, up to a maximum of 25 people, whichever is fewer.',
     gatherings: 'Non-essential gatherings must be limited to no more than 10 people for both indoor and outdoor settings. Any individual who encourages, promotes or organizes mass gatherings may be fined up to $15,000/day',
-    businesses: 'Non-essential businesses including gyms and fitness centers, and personal care services, including barbers, hair salons, spas, tattoo or piercing parlors, nail technicians and nail salons, cosmetologists, estheticians, the provision of laser hair removal and electrolysis, etc. must close. ',
+    businesses: 'Businesses including gyms and fitness centers, and personal care services, including barbers, hair salons, spas, tattoo or piercing parlors, nail technicians and nail salons, cosmetologists, estheticians, the provision of laser hair removal and electrolysis, etc. must close. ',
     food_service_establishments: 'Restaurants, bars, cafes and other food service establishments can provide outdoor dining and takeout and delivery service only. There is a four-person maximum per table. No indoor dining is allowed. ',
     schools: 'All New York City public schools and nonpublic schools must close and return to full remote learning. '
   },
