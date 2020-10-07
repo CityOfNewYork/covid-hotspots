@@ -6,10 +6,13 @@
   bottom: 0;
 }
 
-.pop .btn-x {
+.pop.fullscreen .btn {
+  margin: 0;
+}
+.pop .btn.btn-x {
   margin: 7px;
 }
-.pop.no-zone .btn-x {
+.pop.no-zone .btn.btn-x {
   margin: 7px 3px;
 }
 .pop.fullscreen .btn.btn-x {
