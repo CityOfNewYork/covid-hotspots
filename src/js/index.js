@@ -31,8 +31,9 @@ export const html = feature => {
       const target = $('<div></div>')
       const activity = title.replace(/ /g, '_').toLowerCase()
       const content = (`<div>${GUIDANCE[zone_code][activity]}</div>`)
+      const collapsible = new Collapsible({target, title, content, collapsed: true})
+      collapsible.on('change', () => {popup.pan()})
       html.append(target)
-      new Collapsible({target, title, content, collapsed: true})
     })
   } else {
     html.append('<h2 role="alert" aria-live="assertive">You are not located in a restricted zone</h2>')
