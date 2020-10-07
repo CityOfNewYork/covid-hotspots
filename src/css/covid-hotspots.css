@@ -10,10 +10,7 @@
   margin: 0;
 }
 .pop .btn.btn-x {
-  margin: 7px;
-}
-.pop.no-zone .btn.btn-x {
-  margin: 7px 3px;
+  margin: 9px;
 }
 .pop.fullscreen .btn.btn-x {
   margin: 12px;
@@ -36,11 +33,14 @@
 }
 
 .pop h3 {
-  margin: 5px 0;
+  margin: 5px 0 2px;
 }
 
 .pop .clps {
   margin-bottom: 5px;
+}
+.pop .content:first-child {
+  padding: 3px;
 }
 
 .pop .btn.info {
