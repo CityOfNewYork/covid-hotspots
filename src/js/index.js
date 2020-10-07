@@ -35,8 +35,10 @@ export const html = feature => {
       collapsible.on('change', () => {popup.pan()})
       html.append(target)
     })
+    $(popup.getElement()).removeClass('no-zone')
   } else {
     html.append('<h2 role="alert" aria-live="assertive">You are not located in a restricted zone</h2>')
+    $(popup.getElement()).addClass('no-zone')
   }
   return html.append(`<a class="btn rad-all info" target="_blank" href="${INFO_URL}">More Information</a>`)
 }

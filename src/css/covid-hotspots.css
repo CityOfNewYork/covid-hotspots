@@ -9,6 +9,9 @@
 .pop .btn-x {
   margin: 7px;
 }
+.pop.no-zone .btn-x {
+  margin: 7px 3px;
+}
 .pop.fullscreen .btn.btn-x {
   margin: 12px;
 }
