@@ -2,6 +2,15 @@ import Feature from 'ol/Feature'
 import app from '../src/js/index'
 import {ACTIVITIES, GUIDANCE, INFO_URL, NO_ZONE} from '../src/js/constants'
 
+const pan = app.popup.pan
+
+beforeEach(() => {
+  app.popup.pan = jest.fn()
+})
+
+afterEach(() => {
+  app.popup.pan = pan
+})
 
 describe('html', () => {
   test('html in a red zone', () => {
@@ -78,3 +87,14 @@ describe('html', () => {
   })
 })
 
+// test('popup pans on content expansion', () => {
+//   expect.assertions(1)
+
+//   const feature = new Feature({zone_code: 'yellow'})
+
+//   const html = app.html(feature)
+
+//   $(html.find('button').get(0)).trigger('click')
+
+//   expect(app.popup.pan).toHaveBeenCalledTimes(1)
+// })
