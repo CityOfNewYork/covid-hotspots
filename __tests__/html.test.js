@@ -1,6 +1,6 @@
 import Feature from 'ol/Feature'
 import app from '../src/js/index'
-import {TITLE, ACTIVITIES, GUIDANCE, GEOCLIENT_URL, INFO_URL, DATA_URL} from '../src/js/constants'
+import {ACTIVITIES, GUIDANCE, INFO_URL, NO_ZONE} from '../src/js/constants'
 
 
 describe('html', () => {
@@ -12,7 +12,7 @@ describe('html', () => {
     const html = app.html(feature)
 
     expect(html.find('h2').length).toBe(1)
-    expect(html.find('h2').text()).toBe('You are located in the red zone')
+    expect(html.find('h2').text()).toBe('You are located in the RED zone')
 
     const collapsibles = html.find('.clps')
 
@@ -33,7 +33,7 @@ describe('html', () => {
     const html = app.html(feature)
 
     expect(html.find('h2').length).toBe(1)
-    expect(html.find('h2').text()).toBe('You are located in the orange zone')
+    expect(html.find('h2').text()).toBe('You are located in the ORANGE zone')
 
     const collapsibles = html.find('.clps')
 
@@ -54,7 +54,7 @@ describe('html', () => {
     const html = app.html(feature)
 
     expect(html.find('h2').length).toBe(1)
-    expect(html.find('h2').text()).toBe('You are located in the yellow zone')
+    expect(html.find('h2').text()).toBe('You are located in the YELLOW zone')
 
     const collapsibles = html.find('.clps')
 
@@ -73,7 +73,7 @@ describe('html', () => {
     const html = app.html()
 
     expect(html.find('h2').length).toBe(1)
-    expect(html.find('h2').text()).toBe('You are not located in a restricted zone')
+    expect(html.find('h2').text()).toBe(NO_ZONE)
     expect($('<div></div>').append(html.find('a.info')).html()).toBe(`<a class="btn rad-all info" target="_blank" href="${INFO_URL}">More Information</a>`)
   })
 })

@@ -1,4 +1,10 @@
 export const TITLE = 'COVID-19 Hotspot Zone Finder'
+export const NO_ZONE = 'You are not currently located in a designated hotspot. COVID-19 is still spreading in NYC.'
+export const INFO_URL = 'https://www1.nyc.gov/site/coronavirus/index.page'
+export const GEOCLIENT_URL = 'https://maps.nyc.gov/geoclient/v1/search.json?app_key=74DF5DB1D7320A9A2&app_id=nyc-lib-example'
+export const DATA_URL = 'data/hotspots.json'
+
+export const ACTIVITIES = ['Schools', 'Businesses', 'Food Service Establishments', 'Houses of Worship', 'Gatherings'  ]
 
 export const GUIDANCE = {
   yellow: {
@@ -23,9 +29,3 @@ export const GUIDANCE = {
     gatherings: 'Non-essential gatherings of any size are prohibited and must be postponed or cancelled. Any individual who encourages, promotes or organizes mass gatherings may be fined up to $15,000/day.'
   }  
 }
-
-export const ACTIVITIES = ['Schools', 'Businesses', 'Food Service Establishments', 'Houses of Worship', 'Gatherings'  ]
-
-export const INFO_URL = 'https://www1.nyc.gov/site/coronavirus/index.page'
-export const GEOCLIENT_URL = 'https://maps.nyc.gov/geoclient/v1/search.json?app_key=74DF5DB1D7320A9A2&app_id=nyc-lib-example'
-export const DATA_URL = 'data/hotspots.json'

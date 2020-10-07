@@ -11,7 +11,7 @@ import TopoJson from 'ol/format/TopoJSON'
 import Source from 'ol/source/Vector'
 import Layer from 'ol/layer/Vector'
 
-import {TITLE, ACTIVITIES, GUIDANCE, GEOCLIENT_URL, INFO_URL, DATA_URL} from './constants'
+import {TITLE, ACTIVITIES, GUIDANCE, GEOCLIENT_URL, INFO_URL, DATA_URL, NO_ZONE} from './constants'
 import style from './style'
 
 document.title = TITLE
@@ -37,7 +37,7 @@ const app = {
     const html = $('<div></div>')
     if (feature) {
       const zone_code = feature.get('zone_code')
-      html.append(`<h2 class="${zone_code}" role="alert" aria-live="assertive">You are located in the ${zone_code} zone</h2>`)
+      html.append(`<h2 class="${zone_code}" role="alert" aria-live="assertive">You are located in the ${zone_code.toUpperCase()} zone</h2>`)
         .append('<h3>Activity Guidance:</h3>')
       ACTIVITIES.forEach(title => {
         const target = $('<div></div>')
@@ -49,7 +49,7 @@ const app = {
       })
       $(app.popup.getElement()).removeClass('no-zone')
     } else {
-      html.append('<h2 role="alert" aria-live="assertive">You are not located in a restricted zone</h2>')
+      html.append(`<h2 role="alert" aria-live="assertive">${NO_ZONE}</h2>`)
       $(app.popup.getElement()).addClass('no-zone')
     }
     return html.append(`<a class="btn rad-all info" target="_blank" href="${INFO_URL}">More Information</a>`)
