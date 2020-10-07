@@ -1,39 +1,52 @@
-import Source from 'ol/source/Vector'
-import LocationMgr from 'nyc-lib/nyc/ol/LocationMgr'
-
-import {located, popup} from '../src/js/index'
-
-jest.mock('nyc-lib/nyc/ol/LocationMgr')
+import app from '../src/js/index'
 
 describe('located', () => {
-  const source = {}
-  const show = popup.show
-  const div = $('<div id="map"></div>')
+  const show = app.popup.show
+  const getFeaturesAtCoordinate = app.source.getFeaturesAtCoordinate
+  const html = app.html
   let features
-  let html
   beforeEach(() => {
-    $('body').append(div)
-    source.getFeaturesAtCoordinate = jest.fn(coordinate => {
+    app.source.getFeaturesAtCoordinate = jest.fn(coordinate => {
       return features
     })
-    popup.show = jest.fn()
-    html = jest.fn()
+    app.popup.show = jest.fn()
+    app.html = jest.fn()
   })
   afterEach(() => {
-    div.remove()
-    popup.show = show
+    app.popup.show = show
+    app.source.getFeaturesAtCoordinate = getFeaturesAtCoordinate
+    app.html = html
   })
 
   test('geocoded in a zone', () => {
-    expect.assertions(0)
+    expect.assertions(4)
 
     const coordinate = [1, 2]
 
     features = ['mock-feature']
 
-    located({coordinate})
+    app.locationMgr.trigger('geocoded', {coordinate})
 
-    //expect(source.getFeaturesAtCoordinate).toHaveBeenCalledTimes(1)
-   // expect(source.getFeaturesAtCoordinate.mock.calls[0][0]).toBe(coordinate)
+    expect(app.source.getFeaturesAtCoordinate).toHaveBeenCalledTimes(1)
+    expect(app.source.getFeaturesAtCoordinate.mock.calls[0][0]).toBe(coordinate)
+    
+    expect(app.html).toHaveBeenCalledTimes(1)
+    expect(app.html.mock.calls[0][0]).toBe('mock-feature')
+  })
+
+  test('geolocateded not in a zone', () => {
+    expect.assertions(4)
+
+    const coordinate = [1, 2]
+
+    features = []
+
+    app.locationMgr.trigger('geolocated', {coordinate})
+
+    expect(app.source.getFeaturesAtCoordinate).toHaveBeenCalledTimes(1)
+    expect(app.source.getFeaturesAtCoordinate.mock.calls[0][0]).toBe(coordinate)
+    
+    expect(app.html).toHaveBeenCalledTimes(1)
+    expect(app.html.mock.calls[0][0]).toBeUndefined()
   })
 })
