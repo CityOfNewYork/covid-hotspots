@@ -1,3 +1,5 @@
+export const TITLE = 'COVID-19 Hotspot Zone Finder'
+
 export const GUIDANCE = {
   yellow: {
     houses_of_worship: 'Houses of worship may remain open for individual worship at 50% maximum capacity.',
