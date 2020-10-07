@@ -30,7 +30,14 @@ var locationMgr = new LocationMgr({
 const popup = new Popup({map})
 
 const html = feature => {
-  return nyc.html(feature.getProperties())
+  const html = $('<div></div>')
+  if (feature) {
+    html.append('<h2>You are located in a risk zone</h2>')
+      .append(nyc.html(feature.getProperties()))
+  } else {
+    html.append('<h2>You are not located in a risk zone</h2>')
+  }
+  return html.append('<a href="https://www1.nyc.gov/site/coronavirus/index.page" target="_blank">More information</a>')
 }
 
 const located = location => {
@@ -39,7 +46,7 @@ const located = location => {
   if (features.length) {
     popup.show({coordinate, html: html(features[0])})
   } else {
-    popup.show({coordinate, html: 'you\'re good'})
+    popup.show({coordinate, html: html()})
   }
 }
 
