@@ -1,6 +1,6 @@
 {
   "name": "covid-hotspots",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Covid hostspot map",
   "main": "index.js",
   "scripts": {
