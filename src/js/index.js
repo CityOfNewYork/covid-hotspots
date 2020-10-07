@@ -11,51 +11,14 @@ import TopoJson from 'ol/format/TopoJSON'
 import Source from 'ol/source/Vector'
 import Layer from 'ol/layer/Vector'
 
+import {ACTIVITIES, GUIDANCE, GEOCLIENT_URL, INFO_URL, DATA_URL} from './constants'
 import style from './style'
 
 const map = new Basemap({target: 'map'})
-
-const source = new Source({
-  url: 'data/hotspots.json',
-  format: new TopoJson()
-})
-
+const source = new Source({url: DATA_URL, format: new TopoJson()})
 const layer = new Layer({source, style})
-
-map.addLayer(layer)
-
-var locationMgr = new LocationMgr({
-  map: map,
-  url: 'https://maps.nyc.gov/geoclient/v1/search.json?app_key=74DF5DB1D7320A9A2&app_id=nyc-lib-example'
-})
-
+var locationMgr = new LocationMgr({map, url: GEOCLIENT_URL})
 const popup = new Popup({map})
-
-const GUIDANCE = {
-  yellow: {
-    worship: '50% Capacity',
-    mass_gathering: '25 people maximum, indoors and outdoors',
-    business: 'Open',
-    dining: 'Indoor and outdoor dining, 4 person maximum per table',
-    school: 'Open<br>Mandatory weekly testing of students and teachers/staff for in-person settings.'
-  },
-  orange: {
-    worship: '25% Capacity',
-    mass_gathering: '20 people maximum, indoors and outdoors',
-    business: 'Open',
-    dining: 'Indoor and outdoor dining, 4 person maximum per table',
-    school: 'Open<br>Mandatory weekly testing of students and teachers/staff for in-person settings.'
-  },
-  red: {
-    worship: '10% Capacity',
-    mass_gathering: '10 people maximum, indoors and outdoors',
-    business: 'Open',
-    dining: 'Indoor and outdoor dining, 4 person maximum per table',
-    school: 'Open<br>Mandatory weekly testing of students and teachers/staff for in-person settings.'
-  }  
-}
-
-const ACTIVITIES = ['Worship', 'Mass Gathering', 'Business', 'Dining', 'School']
 
 const html = feature => {
   const html = $('<div></div>')
@@ -73,7 +36,7 @@ const html = feature => {
 } else {
     html.append('<h2 role="alert" aria-live="assertive">You are not located in a restricted zone</h2>')
   }
-  return html.append('<a class="btn rad-all info" href="https://www1.nyc.gov/site/coronavirus/index.page" target="_blank">More information</a>')
+  return html.append(`<a class="btn rad-all info" href="${INFO_URL}`)
 }
 
 const located = location => {
@@ -90,6 +53,7 @@ const located = location => {
 new Goog({target: '#map', button: true})
 new Share({target: '#map'})
 
+map.addLayer(layer)
 map.on('click', located)
 locationMgr.on('geocoded', located)
 locationMgr.on('geolocated', located)
